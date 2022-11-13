@@ -1,4 +1,4 @@
-# DocuWorks Text Editor Assessment
+# Text Editor Backend using FastAPI
 
 > Reads a text file specified by the user and performs various functions on it.
 
