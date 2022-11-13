@@ -3,6 +3,7 @@ from text_processor import TextProcessor
 from exceptions import NoPalindromesError, NoEmailAddressesError
 import re
 
+
 class MyTextProcessor(TextProcessor):
     def load(self, path) -> None:
         print(path)
@@ -14,16 +15,14 @@ class MyTextProcessor(TextProcessor):
 
     def search(self, search_phrase: str) -> list[tuple[int, int]]:
         return [
-                (match.span())
-                # Iteratively searches phrase using regex
-                for match in re.finditer(search_phrase, self.text)
-            ]
-
+            (match.span())
+            # Iteratively searches phrase using regex
+            for match in re.finditer(search_phrase, self.text)
+        ]
 
     def replace(self, search_string, replace_string) -> None:
         # Initalize new text object for replaced text
         self.text = re.sub(search_string, replace_string, self.text)
-        
 
     def save(self, path) -> None:
         with open(path, "w") as new_file:
@@ -35,7 +34,7 @@ class MyTextProcessor(TextProcessor):
         """Fomats input text to remove punctuation, and returns a filter object with filtered words"""
 
         format_text = self.text.replace("\n", " ")
-        format_text = re.sub(r"[^\w\s]", "", format_text) # Remove punctuation
+        format_text = re.sub(r"[^\w\s]", "", format_text)  # Remove punctuation
 
         if set_lower:
             format_text = format_text.lower()
